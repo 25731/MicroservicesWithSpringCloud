@@ -17,6 +17,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/CloudSlethZipkin/pom.xml" />
+        <option value="$PROJECT_DIR$/Tracing/pom.xml" />
       </set>
     </option>
   </component>
