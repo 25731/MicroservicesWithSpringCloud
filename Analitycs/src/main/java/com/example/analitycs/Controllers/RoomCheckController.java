@@ -10,8 +10,9 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class RoomCheckController {
     private final RoomCheckService roomCheckService;
-    @GetMapping("/checks/count")
-    public Mono<Long> getCheckCount() {
-        return roomCheckService.countChecks();
+    @GetMapping("/count")
+    public Mono<String> getCheckCount() {
+        return roomCheckService.countChecks()
+                .map(count -> "Od początku działalności, nasi klienci sprawdzali dostępność pokoju " + count + " razy.");
     }
 }
