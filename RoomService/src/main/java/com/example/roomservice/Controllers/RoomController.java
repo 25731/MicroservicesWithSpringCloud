@@ -1,4 +1,5 @@
 package com.example.roomservice.Controllers;
+
 import com.example.roomservice.Entities.Room;
 import com.example.roomservice.Entities.CleaningStatus;
 import com.example.roomservice.Exception.RoomConflictException;
@@ -7,10 +8,12 @@ import com.example.roomservice.Services.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.messaging.Message;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import java.util.function.Supplier;
 
 @RestController
 @RequestMapping(value = "/rooms", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -18,6 +21,7 @@ import reactor.core.publisher.Mono;
 public class RoomController {
 
     private final RoomService roomService;
+    private final Supplier<Message<String>> roomAccessedSupplier;
 
     @GetMapping("/{id}")
     public Mono<Room> getRoom(@PathVariable Long id) {
@@ -45,6 +49,7 @@ public class RoomController {
 
     @GetMapping("/Available")
     public Flux<Room> getAvailableRooms() {
+        roomAccessedSupplier.get();
         return roomService.getRoomsByCleaningStatus(CleaningStatus.NOT_CLEANING);
     }
 }
