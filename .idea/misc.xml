@@ -12,6 +12,8 @@
         <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
         <option value="$PROJECT_DIR$/CloudSlethZipkin/pom.xml" />
         <option value="$PROJECT_DIR$/Tracing/pom.xml" />
+        <option value="$PROJECT_DIR$/RoomService/pom.xml" />
+        <option value="$PROJECT_DIR$/CleaningService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
